@@ -109,8 +109,5 @@ The program will print:
 - Check data preprocessing
 
 ## Author
-Master's Student - University of North Florida
-CIS 6372: Information Assurance
+Akash Dathaprasad - N01642373
 
-## License
-MIT License
