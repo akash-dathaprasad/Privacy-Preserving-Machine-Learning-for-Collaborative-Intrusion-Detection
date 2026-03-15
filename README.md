@@ -10,26 +10,51 @@ This project demonstrates:
 3. **Non-IID Data** - Realistic scenario with different attack distributions
 4. **Differential Privacy** - Adding noise for extra privacy protection
 
-## Setup
 
-### 1. Install Requirements
-```bash
-pip install -r requirements.txt
+## Dataset Setup
+
+### Download Dataset
+
+The NSL-KDD dataset is **NOT included** in this repository. Please download it separately:
+
+**Option 1: Kaggle (Recommended)**
+1. Go to: https://www.kaggle.com/datasets/hassan06/nslkdd
+2. Click "Download" (requires free Kaggle account)
+3. Extract the ZIP file
+
+**Option 2: GitHub Backup**
+1. Go to: https://github.com/jmnwong/NSL-KDD-Dataset
+2. Download the repository
+3. Navigate to the dataset folder
+
+### Required Files
+
+You need these two files:
+- `KDDTrain+.txt`
+- `KDDTest+.txt`
+
+### File Placement
+
+Place both files in the **same directory** as `main.py`:
+```
+federated-learning-ids/
+├── KDDTrain+.txt        ← Place here
+├── KDDTest+.txt         ← Place here
+├── data_prep.py
+├── model_training.py
+├── main.py
+├── requirements.txt
+└── README.md
 ```
 
-### 2. Download NSL-KDD Dataset
-Download from: https://www.unb.ca/cic/datasets/nsl.html
+### Verify Setup
 
-You need:
-- KDDTrain+.txt
-- KDDTest+.txt
-
-Place them in the project folder.
-
-### 3. Run Experiments
+After placing the files, verify by running:
 ```bash
 python main.py
 ```
+
+If you see "Loading data..." followed by sample counts, the setup is correct!
 
 ## What the Code Does
 
