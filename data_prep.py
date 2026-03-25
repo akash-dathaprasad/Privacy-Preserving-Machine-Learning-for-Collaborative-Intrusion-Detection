@@ -17,7 +17,7 @@ def load_and_prepare_data(train_file, test_file):
     Returns:
         X_train, X_test, y_train, y_test
     """
-    # Column names for NSL-KDD
+    # Column names for NSL-KDD dataset
     columns = ['duration', 'protocol_type', 'service', 'flag', 'src_bytes',
               'dst_bytes', 'land', 'wrong_fragment', 'urgent', 'hot',
               'num_failed_logins', 'logged_in', 'num_compromised', 'root_shell',
