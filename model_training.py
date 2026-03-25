@@ -199,7 +199,8 @@ def aggregate_models(client_models, client_sizes):
             global_dict[key] += model.state_dict()[key] * weight
     
     # Create new model with aggregated weights
-    global_model = SimpleNet(list(global_dict.values())[0].shape[1] if len(list(global_dict.values())[0].shape) > 1 else 41)
+    input_size = list(client_models[0].state_dict().values())[0].shape[1] if len(list(client_models[0].state_dict().values())[0].shape) > 1 else 41
+    global_model = SimpleNet(input_size)
     global_model.load_state_dict(global_dict)
     
     return global_model
