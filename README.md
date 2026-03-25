@@ -6,14 +6,18 @@ Simple implementation of federated learning with differential privacy for networ
 
 This project demonstrates:
 1. **Centralized Training** - Traditional ML approach (baseline)
-2. **Federated Learning** - Collaborative training without sharing data
-3. **Non-IID Data** - Realistic scenario with different attack distributions
-4. **Differential Privacy** - Adding noise for extra privacy protection
+2. **Federated Learning (Random Split)** - Collaborative training with uniform data distribution
+3. **Federated Learning (Non-IID Split)** - Realistic scenario with heterogeneous data
+4. **Federated Learning with Differential Privacy** - Maximum privacy protection
 
+## Setup
 
-## Dataset Setup
+### 1. Install Requirements
+```bash
+pip install -r requirements.txt
+```
 
-### Download Dataset
+### 2. Download NSL-KDD Dataset
 
 The NSL-KDD dataset is **NOT included** in this repository. Please download it separately:
 
@@ -35,9 +39,9 @@ You need these two files:
 
 ### File Placement
 
-Place both files in the **same directory** as `main.py`:
+Place both files in the **same directory** as the Python scripts:
 ```
-federated-learning-ids/
+project-folder/
 ├── KDDTrain+.txt        ← Place here
 ├── KDDTest+.txt         ← Place here
 ├── data_prep.py
@@ -47,92 +51,118 @@ federated-learning-ids/
 └── README.md
 ```
 
-### Verify Setup
-
-After placing the files, verify by running:
+### 3. Run Experiments
 ```bash
 python main.py
 ```
-
-If you see "Loading data..." followed by sample counts, the setup is correct!
 
 ## What the Code Does
 
 ### data_prep.py
 - Loads NSL-KDD dataset
-- Converts text features to numbers
-- Normalizes all values
+- Converts text features to numbers using label encoding
+- Normalizes all values using standard scaling
 - Splits data for 3 clients (random or non-IID)
 
 ### model_training.py
-- Simple 3-layer neural network
+- Simple 3-layer neural network (64→32→2 neurons)
 - Centralized training function
 - Federated learning function
 - Differential privacy noise addition
-- Model aggregation (averaging)
+- Model aggregation using weighted averaging
+- Evaluation metrics calculation
 
 ### main.py
-- Runs all 4 experiments
-- Compares results
-- Creates comparison graphs
-
-## Files Created
-
-After running:
-- `results_comparison.png` - Accuracy comparison chart
-- `detailed_metrics.png` - All metrics comparison
+- Runs all 4 experiments sequentially
+- Compares results across approaches
+- Creates visualization graphs
 
 ## Expected Results
 
-- **Centralized**: ~93% accuracy (best, but no privacy)
-- **Federated Random**: ~91-92% accuracy (good privacy, similar performance)
-- **Federated Non-IID**: ~88-90% accuracy (realistic scenario)
-- **Federated + DP**: ~85-88% accuracy (strongest privacy, some accuracy loss)
+- **Centralized**: ~93% accuracy (best performance, no privacy)
+- **Federated Random**: ~91-92% accuracy (good privacy, minimal accuracy loss)
+- **Federated Non-IID**: ~88-90% accuracy (realistic scenario with data heterogeneity)
+- **Federated + DP**: ~85-88% accuracy (strongest privacy, measurable accuracy cost)
+
+## Files Created After Running
+
+- `results_comparison.png` - Accuracy comparison and learning progress
+- `detailed_metrics.png` - Comprehensive metrics comparison
 
 ## How to Modify
 
 ### Change number of clients:
-In `main.py`, modify:
 ```python
-client_data_random = split_data_for_clients(X_train, y_train, num_clients=5)  # Change 3 to 5
+client_data = split_data_for_clients(X_train, y_train, num_clients=5)  # Change 3 to 5
 ```
 
 ### Change privacy budget:
-In `main.py`, modify:
 ```python
 dp_model, dp_acc, dp_time = train_federated(..., epsilon=1.0)  # Change 2.0 to 1.0
 ```
 
 ### Change training rounds:
-In `main.py`, modify:
 ```python
-fl_model_random, fl_acc_random, fl_time_random = train_federated(..., rounds=50)  # Change 30 to 50
+fl_model, fl_acc, fl_time = train_federated(..., rounds=50)  # Change 30 to 50
 ```
 
 ## Understanding the Output
 
 The program will print:
-1. Data loading progress
-2. Training progress for each approach
-3. Final accuracy for each method
-4. Comparison table
-5. Training times
+1. Data loading and preprocessing progress
+2. Training progress for each approach (every 5 epochs for centralized, every round for federated)
+3. Final metrics (accuracy, precision, recall, F1-score) for each method
+4. Comparison table of all approaches
+5. Training time for each method
 
 ## Troubleshooting
 
 **"File not found" error**: 
-- Make sure KDDTrain+.txt and KDDTest+.txt are in the same folder
-- Update paths in main.py if needed
+- Ensure `KDDTrain+.txt` and `KDDTest+.txt` are in the same folder as `main.py`
+- Check file names are exact (with the `+` sign)
 
 **"Out of memory" error**: 
-- Reduce batch size in model_training.py
-- Use fewer training rounds
+- Reduce number of training rounds
+- Close other applications
 
-**Poor accuracy**: 
-- Increase number of epochs
-- Adjust learning rate
-- Check data preprocessing
+**Low accuracy**: 
+- Ensure dataset files are correct
+- Check if all required packages are installed
+- Try increasing number of epochs/rounds
+
+## Project Structure
+```
+project/
+├── data_prep.py           # Data loading and preprocessing
+├── model_training.py      # Neural network and training functions
+├── main.py               # Main experiment runner
+├── requirements.txt      # Python dependencies
+├── README.md            # This file
+├── KDDTrain+.txt        # Dataset (not included - download separately)
+└── KDDTest+.txt         # Dataset (not included - download separately)
+```
 
 ## Author
-Akash Dathaprasad - N01642373
+Master's Student  
+University of North Florida  
+CIS 6372: Information Assurance
 
+## License
+MIT License
+
+## Citation
+
+If you use this code, please cite:
+```
+Privacy-Preserving Federated Learning for Collaborative Network Intrusion Detection Systems
+University of North Florida, 2025
+```
+
+## Dataset Citation
+
+NSL-KDD Dataset:
+```
+Tavallaee, M., Bagheri, E., Lu, W., & Ghorbani, A. A. (2009). 
+A detailed analysis of the KDD CUP 99 data set. 
+In IEEE Symposium on Computational Intelligence for Security and Defense Applications.
+```
