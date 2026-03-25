@@ -177,7 +177,7 @@ axes[1].legend()
 axes[1].grid(True)
 
 plt.tight_layout()
-plt.savefig('results_comparison.png')
+plt.savefig('results_comparison.png', dpi=300)
 print("Saved: results_comparison.png")
 
 # Plot 2: Detailed Metrics Comparison
@@ -198,11 +198,15 @@ ax.set_xticks(x + width * 1.5)
 ax.set_xticklabels(metrics_names)
 ax.legend()
 ax.grid(True, axis='y')
+ax.set_ylim([0, 100])
 
 plt.tight_layout()
-plt.savefig('detailed_metrics.png')
+plt.savefig('detailed_metrics.png', dpi=300)
 print("Saved: detailed_metrics.png")
 
 print("\n" + "="*80)
 print("ALL EXPERIMENTS COMPLETED SUCCESSFULLY!")
 print("="*80)
+print("\nResults saved:")
+print("  - results_comparison.png")
+print("  - detailed_metrics.png")
