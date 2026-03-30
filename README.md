@@ -1,6 +1,6 @@
 # Privacy-Preserving Federated Learning for Intrusion Detection
 
-Simple implementation of federated learning with differential privacy for network intrusion detection.
+Implementation of federated learning with differential privacy for network intrusion detection.
 
 ## Project Overview
 
@@ -21,12 +21,7 @@ pip install -r requirements.txt
 
 The NSL-KDD dataset is **NOT included** in this repository. Please download it separately:
 
-**Option 1: Kaggle (Recommended)**
-1. Go to: https://www.kaggle.com/datasets/hassan06/nslkdd
-2. Click "Download" (requires free Kaggle account)
-3. Extract the ZIP file
-
-**Option 2: GitHub Backup**
+**Option 1: GitHub Backup**
 1. Go to: https://github.com/jmnwong/NSL-KDD-Dataset
 2. Download the repository
 3. Navigate to the dataset folder
@@ -143,7 +138,7 @@ project/
 ```
 
 ## Author
-Master's Student  
+Akash Dathaprasad (N01642373)  
 University of North Florida  
 CIS 6372: Information Assurance
 
