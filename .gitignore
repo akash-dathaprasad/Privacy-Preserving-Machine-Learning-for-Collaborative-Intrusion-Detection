@@ -1,0 +1,31 @@
+# Dataset files - do not commit
+*.txt
+KDDTrain+.txt
+KDDTest+.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Results
+*.png
+*.jpg
+*.pkl
+*.pth
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
