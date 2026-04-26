@@ -15,16 +15,8 @@ This project demonstrates:
 ### 1. Install Requirements
 ```bash
 pip install -r requirements.txt
+pip install numpy torch pandas scikit-learn matplotlib
 ```
-
-### 2. Download NSL-KDD Dataset
-
-The NSL-KDD dataset is **NOT included** in this repository. Please download it separately:
-
-**Option 1: GitHub Backup**
-1. Go to: https://github.com/jmnwong/NSL-KDD-Dataset
-2. Download the repository
-3. Navigate to the dataset folder
 
 ### Required Files
 
@@ -46,7 +38,7 @@ project-folder/
 └── README.md
 ```
 
-### 3. Run Experiments
+### 2. Run Experiments
 ```bash
 python main.py
 ```
@@ -84,23 +76,6 @@ python main.py
 - `results_comparison.png` - Accuracy comparison and learning progress
 - `detailed_metrics.png` - Comprehensive metrics comparison
 
-## How to Modify
-
-### Change number of clients:
-```python
-client_data = split_data_for_clients(X_train, y_train, num_clients=5)  # Change 3 to 5
-```
-
-### Change privacy budget:
-```python
-dp_model, dp_acc, dp_time = train_federated(..., epsilon=1.0)  # Change 2.0 to 1.0
-```
-
-### Change training rounds:
-```python
-fl_model, fl_acc, fl_time = train_federated(..., rounds=50)  # Change 30 to 50
-```
-
 ## Understanding the Output
 
 The program will print:
@@ -115,15 +90,6 @@ The program will print:
 **"File not found" error**: 
 - Ensure `KDDTrain+.txt` and `KDDTest+.txt` are in the same folder as `main.py`
 - Check file names are exact (with the `+` sign)
-
-**"Out of memory" error**: 
-- Reduce number of training rounds
-- Close other applications
-
-**Low accuracy**: 
-- Ensure dataset files are correct
-- Check if all required packages are installed
-- Try increasing number of epochs/rounds
 
 ## Project Structure
 ```
@@ -150,7 +116,7 @@ MIT License
 If you use this code, please cite:
 ```
 Privacy-Preserving Federated Learning for Collaborative Network Intrusion Detection Systems
-University of North Florida, 2025
+University of North Florida, 2026
 ```
 
 ## Dataset Citation
