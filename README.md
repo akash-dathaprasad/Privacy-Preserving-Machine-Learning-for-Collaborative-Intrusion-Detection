@@ -97,10 +97,9 @@ project/
 ├── data_prep.py           # Data loading and preprocessing
 ├── model_training.py      # Neural network and training functions
 ├── main.py               # Main experiment runner
-├── requirements.txt      # Python dependencies
 ├── README.md            # This file
-├── KDDTrain+.txt        # Dataset (not included - download separately)
-└── KDDTest+.txt         # Dataset (not included - download separately)
+├── KDDTrain+.txt        #dataset
+└── KDDTest+.txt         #dataset
 ```
 
 ## Author
